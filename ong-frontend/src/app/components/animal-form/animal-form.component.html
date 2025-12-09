@@ -1,0 +1,79 @@
+<div class="form-wrapper">
+  <div class="form-container">
+    <form (ngSubmit)="salvarAnimal()">
+      <fieldset>
+        <legend>Informações do Animal</legend>
+
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" [(ngModel)]="animal.nome" name="nome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="especie">Espécie (ex: Cachorro, Gato):</label>
+          <input type="text" id="especie" [(ngModel)]="animal.especie" name="especie" required>
+        </div>
+
+        <div class="form-group">
+          <label for="raca">Raça:</label>
+          <input type="text" id="raca" [(ngModel)]="animal.raca" name="raca">
+        </div>
+
+        <div class="form-group">
+          <label for="idade">Idade:</label>
+          <input type="number" id="idade" [(ngModel)]="animal.idade" name="idade">
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Descrição:</label>
+          <textarea id="descricao" [(ngModel)]="animal.descricao" name="descricao"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="mb-3">
+    <label for="localizacao" class="form-label">Localização (Bairro/Cidade):</label>
+    <input type="text" class="form-control" id="localizacao"
+           [(ngModel)]="animal.localizacao" name="localizacao"
+           placeholder="Ex: Centro - São Paulo">
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="form-check form-switch p-3 border rounded bg-light">
+        <input class="form-check-input" type="checkbox" id="vacinado"
+               [(ngModel)]="animal.vacinado" name="vacinado" style="cursor: pointer;">
+        <label class="form-check-label fw-bold" for="vacinado" style="cursor: pointer;">
+          💉 Animal Vacinado?
+        </label>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-check form-switch p-3 border rounded bg-light">
+        <input class="form-check-input" type="checkbox" id="castrado"
+               [(ngModel)]="animal.castrado" name="castrado" style="cursor: pointer;">
+        <label class="form-check-label fw-bold" for="castrado" style="cursor: pointer;">
+          ✂️ Animal Castrado?
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="foto" class="form-label fw-bold">📸 Foto do Animal   </label><br>
+    <input class="form-control" type="file" id="foto" accept="image/*"
+           (change)="onFileSelected($event)">
+    <div class="form-text">Formatos aceitos: JPG, PNG.</div>
+  </div>
+        <div class="form-actions">
+        <button type="submit" class="btn-salvar">Salvar Animal</button>
+        <a routerLink="/" class="btn-secondary">Voltar</a>
+      </div>
+  <div class="mb-4 text-center" *ngIf="animal.fotoUrl">
+    <img [src]="animal.fotoUrl" class="img-thumbnail rounded shadow"
+         style="max-height: 250px; object-fit: cover;">
+  </div>
+    </form>
+  </div>
+
+</div>
